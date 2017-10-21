@@ -1,0 +1,27 @@
+{
+  "name": "hangman_cli",
+  "version": "1.0.0",
+  "description": "a hangman command-line game using constructor functions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffreylowy/hangman-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "hangman",
+    "node"
+  ],
+  "author": "Jeffrey Lowy <jeffreylowy@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeffreylowy/hangman-cli/issues"
+  },
+  "homepage": "https://github.com/jeffreylowy/hangman-cli#readme",
+  "dependencies": {
+    "inquirer": "^3.3.0"
+  }
+}
