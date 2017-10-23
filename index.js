@@ -1,6 +1,14 @@
 let Word = require("./hangman_modules/word");
 let Letter = require("./hangman_modules/letter");
+var inquirer = require('inquirer');
 
-var word_game = new Word();
+// inquirer.prompt([{
+// 	type:'input',
+// 	name:'letter',
+// 	message:"Enter letter"
+// }]).then(function (answers) {
+// 	console.log(answers)
+// });
 
-console.log(word_game);
+var a = new Word();
+console.log(a);
