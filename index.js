@@ -10,7 +10,7 @@ function startGame() {
 		name: 'letter',
 		message: "Enter a letter",
 		validate: function (value) {
-			return new Letter(value, word).log("Something").validate();
+			return new Letter(value, word).validate();
 		}
 	}]).then(function (answers) {
 		console.log(">>> INDEX.JS | .then(answers):",answers);

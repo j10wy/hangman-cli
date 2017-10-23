@@ -40,7 +40,7 @@ function validate() {
 		return false;
 	} else {
 		// Letter seems to be a valid entry
-		this.log("Valid entry...\n");
+		this.log("\nValid entry...\n");
 		return true;
 	}
 }
