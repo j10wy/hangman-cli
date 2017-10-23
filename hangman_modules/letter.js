@@ -1,24 +1,44 @@
 function Letter(letter, word) {
+	// Store the word passed in index.js
 	this.word = word;
+	// Store the word passed from Inquirer in index.js
 	this.letter = letter;
-	this.log = () => {
-		console.log(">>> LETTER.JS | new Letter():", this);
-		return true;
-	};
+	// Log function to help with debugging
+	this.log = log;
+	// Method to determine if the letter is in the word array-like object;
+	this.inArray = (word, letter) => {
+		word.find(entry => {
+			return entry === letter;
+		});
+	}
+	// The validate method will determine if the user can proceed to Inquirer's then call
 	this.validate = () => {
+		// Create a regex to test if entry is a digit
 		var regexNum = /\d/;
-		console.log(">>>> WORD PASSED TO LETTER:", this.word);
+
 		if (regexNum.exec(this.letter)) {
-			console.log("\n\nNumbers not allowed!\n");
+			// Test for digits first. 
+			this.log("\n\nNumbers not allowed!\n");
 			return false;
 		} else if (this.letter.length > 1 || this.letter.length === 0) {
-			console.log("\n\nEnter a single letter\n");
+			// if value is not a digit, text if the length is lt 0 or gt 1
+			this.log("\n\nEnter a single letter\n");
 			return false;
 		} else {
-			console.log("Thanks!");
+			// Letter seems to be a valid entry
+			this.log("Valid entry...\n");
 			return true;
 		}
 	}
 }
+
+function log(stuffToLog) {
+	console.log(`\n****** START LOGGER ******`);
+	console.log(stuffToLog);
+	console.log(`\n****** END LOGGER ******\n`);
+	// Return 'this' so I can chain methods in index.js
+	// Example: return new Letter(value, word).log("Logging stuff...").validate();
+	return this;
+};
 
 module.exports = Letter;

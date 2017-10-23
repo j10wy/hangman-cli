@@ -8,9 +8,9 @@ function startGame() {
 	inquirer.prompt([{
 		type: 'input',
 		name: 'letter',
-		message: "Enter letter",
+		message: "Enter a letter",
 		validate: function (value) {
-			return new Letter(value, word).validate();
+			return new Letter(value, word).log("Something").validate();
 		}
 	}]).then(function (answers) {
 		console.log(">>> INDEX.JS | .then(answers):",answers);
