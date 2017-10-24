@@ -6,7 +6,7 @@ function Letter(letter, word) {
 	// Log function to help with debugging
 	this.log = log;
 	// Method to determine if the letter is in the word array-like object;
-	this.inArray = inArray
+	this.inArray = inArray;
 	// The validate method will determine if the user can proceed to Inquirer's then call
 	this.validate = validate;
 }

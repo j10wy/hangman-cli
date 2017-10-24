@@ -3,21 +3,30 @@ var words = require("./words");
 function Word() {
 
 	this.word = randomWord(words);
-	this.displayWord = displayWord;
+	this.mask = [];
+	this.udpateWordArray = udpateWordArray;
+	this.wordarray = [];
 
 }
 
 // FUNCTIONS
 
-function displayWord() {
-	var length = this.word.length;
-	var dashes = "";
-	(function __(numberOfDashes) {
-		for (var _ = 0; _ < length; _++) {
-			dashes += "_";
+function udpateWordArray() {
+	var word = this.word;
+	var numberOfLetters = word.length;
+	var arr = [];
+	
+	for (var l = 0; l < numberOfLetters; l++) {
+		arr.push(word[l]);
+	}
+
+	arr.find((item, index) => {
+		if (item === "A") {
+			console.log(item, index);
 		}
-	}(length));
-	console.log(dashes);
+	});
+	//@todo should not return true/false/undefined
+	return true;
 }
 
 function randomWord(arr) {
