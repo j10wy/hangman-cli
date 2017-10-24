@@ -4,6 +4,9 @@ function Word() {
 
 	this.revealed = [];
 	this.word = randomWord(words, this);
+	this.isThisLegal = () => {
+		console.log("YUP!");
+	}
 
 }
 

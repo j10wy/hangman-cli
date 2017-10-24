@@ -20,10 +20,22 @@ function log(stuffToLog) {
 	return this;
 };
 
+// Each object created by the Word contructor has the word in string and array format
+// The inArray method takes the entire Word object searches and updates Word.wordarray and Word.mask
+// @todo Store a copy of the word
+// @body This will display ___ to the user in an Inquirer prompt
 function inArray(word, letter) {
-	word.find(entry => {
-		return entry === letter;
+	var letterUppercase = letter.toUpperCase();
+	word.wordarray.find((item, index) => {
+		if (item === letterUppercase) {
+			//console.log("\n\nMASK B4 UPDATE:", word.mask);
+			//console.log("\n\nFound:", letterUppercase, "INDEX:",index);
+			word.mask[index] = letterUppercase;
+		}
 	});
+	console.log("\n\nMASK AFTER UPDATE:", word.mask);
+	word.isThisLegal();
+	console.log("\n\nWORD ARRAY:", word.wordarray, "LETTER:", JSON.stringify(letterUppercase));
 }
 
 function validate() {
@@ -40,8 +52,9 @@ function validate() {
 		return false;
 	} else {
 		// Letter seems to be a valid entry
-		this.log("\nValid entry...\n");
-		return true;
+		// this.log("\nValid entry...\n");
+		this.inArray(this.word, this.letter);
+		return false;
 	}
 }
 
