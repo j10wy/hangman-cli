@@ -25,7 +25,7 @@ function udpateWordArray() {
 			console.log(item, index);
 		}
 	});
-	//@todo should not return true/false/undefined
+	// @todo should not return true/false/undefined
 	return true;
 }
 
