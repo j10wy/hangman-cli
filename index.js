@@ -11,6 +11,7 @@ var word = null;
 
 function startGame() {
 	word = new Word;
+	console.log(word);
 	inquirer.prompt([{
 		type: 'input',
 		name: 'letter',
@@ -20,7 +21,7 @@ function startGame() {
 		}
 	}]).then(() => {
 		console.log("\n\nYou win!\n\n".toUpperCase());
-		playAgain()
+		playAgain();
 	});
 }
 

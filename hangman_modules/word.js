@@ -3,6 +3,9 @@ var words = require("./words");
 function Word() {
 
 	this.revealed = [];
+	// @todo End game if 0
+	// @body Go to the end game prompt when guesses reach 0
+	this.guesses = null;
 	this.word = randomWord(words, this);
 	this.wordCopy = "";
 
@@ -18,8 +21,6 @@ function randomWord(arr, self) {
 	var wordArray = [];
 	var maskArray = [];
 
-	// @todo Keep track of points/guesses
-
 	for (var l = 0; l < word.length; l++) {
 		wordArray.push(word[l]);
 		maskArray.push("_");
@@ -27,6 +28,7 @@ function randomWord(arr, self) {
 
 	self.wordarray = wordArray;
 	self.mask = maskArray;
+	self.guesses = parseInt(word.length);
 
 	return word;
 }
