@@ -1,14 +1,15 @@
-/*
-	@todo require Colors package
-	@body Use require package to colorize the terminal output
+// Require the colors package and set theme options
+var colors = require('colors');
+var colors_theme = require("./hangman_modules/colors_theme");
+colors.setTheme(colors_theme);
 
-	@todo require Debug/Test/Cheat
-	@body --konami-code to display arrays + word
-*/
+// Option to display the word while testing the game
+var test = require("./hangman_modules/test")(process.argv);
 
 const Word = require("./hangman_modules/word");
 const Letter = require("./hangman_modules/letter");
 
+// Require the Inquirer package and initialize the word variable.
 var inquirer = require('inquirer');
 var word = null;
 
@@ -19,8 +20,11 @@ function startGame() {
 	word.mask.map(item => {
 		word.wordCopy += item;
 	});
+	if (test) {
+		console.log(`WORD: ${word.word}`);
+	}
 	// Display the masked letters to the user.
-	console.log(`\n\n${word.wordCopy}\n\n`);
+	console.log(`\n${word.wordCopy}\n\n`);
 
 	// Ask the user to guess a letter.
 	// This will continue to loop (return false) until the word has been fully revealed.
@@ -39,7 +43,7 @@ function startGame() {
 	}]).then(answers => {
 		var entry = answers.entry;
 		var isQuitter = entry.toUpperCase() === 'QUIT' || entry.toUpperCase() === 'EXIT';
-		
+
 		if (isQuitter) {
 			// End the game, exit to the command line.
 			return false;
@@ -51,6 +55,8 @@ function startGame() {
 	});
 }
 
+// Function to ask the user if they want to play again when the game ends either by win or guesses reach 0.
+// This function will not be called if/when user enters 'quit' or 'exit'
 function playAgain() {
 	inquirer.prompt([{
 		type: 'list',
@@ -58,12 +64,15 @@ function playAgain() {
 		message: 'Want to play again?',
 		choices: ['Lets do it!', 'Eh... I quit!'],
 	}]).then(answers => {
+		// Allow the player to start a new game
 		if (answers.playagain === 'Lets do it!') {
 			startGame();
 		} else {
+			// Exit to the command line
 			return false;
 		}
 	});
 }
 
+// The inital call to startGame
 startGame();
