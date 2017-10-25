@@ -18,6 +18,8 @@ function randomWord(arr, self) {
 	var wordArray = [];
 	var maskArray = [];
 
+	// @todo Keep track of points/guesses
+
 	for (var l = 0; l < word.length; l++) {
 		wordArray.push(word[l]);
 		maskArray.push("_");
