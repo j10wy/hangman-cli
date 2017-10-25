@@ -1,6 +1,9 @@
 /*
 	@todo require Colors package
 	@body Use require package to colorize the terminal output
+
+	@todo require Debug/Test/Cheat
+	@body --konami-code to display arrays + word
 */
 
 const Word = require("./hangman_modules/word");
