@@ -20,10 +20,27 @@ function log(stuffToLog) {
 	return this;
 };
 
+// Each object created by the Word contructor has the word in string and array format
+// The inArray method takes the entire Word object searches and updates Word.wordarray and Word.mask
 function inArray(word, letter) {
-	word.find(entry => {
-		return entry === letter;
+	var letterUppercase = letter.toUpperCase();
+	word.wordarray.find((item, index) => {
+		if (item === letterUppercase) {
+			word.mask[index] = letterUppercase;
+		}
 	});
+
+	word.wordCopy = "";
+	word.mask.map(item=>{
+		word.wordCopy += item;
+	});
+
+	console.log(`\n\n${word.wordCopy}\n\n`);
+	if (word.word === word.wordCopy) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 function validate() {
@@ -40,8 +57,8 @@ function validate() {
 		return false;
 	} else {
 		// Letter seems to be a valid entry
-		this.log("\nValid entry...\n");
-		return true;
+		// this.log("\nValid entry...\n");
+		return this.inArray(this.word, this.letter);
 	}
 }
 
