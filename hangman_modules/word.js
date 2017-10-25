@@ -3,14 +3,15 @@ var words = require("./words");
 function Word() {
 
 	this.revealed = [];
-	this.word = randomWord(words, this);
+	this.guesses = null;
+	this.word = this.randomWord(words, this);
 	this.wordCopy = "";
 
 }
 
 // FUNCTIONS
 
-function randomWord(arr, self) {
+Word.prototype.randomWord = function randomWord(arr, self) {
 	var numberOfWords = arr.length - 1;
 	var min = Math.ceil(0);
 	var max = Math.floor(numberOfWords);
@@ -18,15 +19,14 @@ function randomWord(arr, self) {
 	var wordArray = [];
 	var maskArray = [];
 
-	// @todo Keep track of points/guesses
-
 	for (var l = 0; l < word.length; l++) {
-		wordArray.push(word[l]);
-		maskArray.push("_");
+		wordArray.push(`${word[l]}`);
+		maskArray.push(" _ ");
 	}
 
 	self.wordarray = wordArray;
 	self.mask = maskArray;
+	self.guesses = parseInt(word.length);
 
 	return word;
 }
