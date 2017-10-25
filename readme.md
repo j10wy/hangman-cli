@@ -11,6 +11,7 @@ node .
 node . --test
 
 # Run via NPM scripts
+# -------------------
 
 # Play a regular game
 npm start
@@ -57,6 +58,9 @@ npm run test
 
 ### Resources
 [MDN: Constructors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor)
+
 [TODO Highlight for VS Code](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight)
+
 [Github Probot TODOs](https://todo.jasonet.co/)
+
 [Github Probots](https://github.com/probot/probot)
