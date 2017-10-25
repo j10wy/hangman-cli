@@ -4,17 +4,11 @@ function Word() {
 
 	this.revealed = [];
 	this.word = randomWord(words, this);
-	this.isThisLegal = () => {
-		console.log("YUP!");
-	}
+	this.wordCopy = "";
 
 }
 
 // FUNCTIONS
-
-function updateMask() {
-	// @todo update the mask when user enters Inquirer validation check
-}
 
 function randomWord(arr, self) {
 	var numberOfWords = arr.length - 1;
