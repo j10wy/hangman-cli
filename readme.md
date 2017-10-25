@@ -1,12 +1,53 @@
 
-### Todo:
-- Use "Jeff".indexOf(key entered)
-- If not -1, then cycle through the array of letters
-- Store the index # of each letter/item in a new array
-- Use the store Array to to compare
+### Commands:
 
-### Inquirer Examples
-- [hierarchical](https://github.com/SBoudrias/Inquirer.js/blob/master/examples/hierarchical.js)
-- [input](https://github.com/SBoudrias/Inquirer.js/blob/master/examples/input.js)
-- [list](https://github.com/SBoudrias/Inquirer.js/blob/master/examples/list.js)
-- [recursive](https://github.com/SBoudrias/Inquirer.js/blob/master/examples/recursive.js)
+Enter any of the following to play the game
+```bash
+# Play a regular game
+node .
+# The word will be displayed when the game starts use this to test the game
+node . --test
+
+# Run via NPM scripts
+npm run
+npm run test
+```
+
+### Game Flow
+
+```
+                                      +------------------+
+                                      | REQUIRE PACKAGES |
+                                      | INITIALIZE VARS  |
+                                      | IN TEST MODE??   |
+                                      +------------------+
+                                                |
+                                                v
+                                      +------------------+
++------------------------------------->    startGame()   <--+
+|                               +-----+ Prompt for entry |  |
+|                               |     +------------------+  +----------------------+
+|                               |                      |    |                      |
+|                       +-------v---------+            |    |                      |
+|                       |   Valid Entry   +---+   +---------------------------+    |
+|            +----------+(a single letter)|   |   |  Number || String v 1     |    |
+|            |          +-----------------+   |   | - Warn user               |    |
+|            |                                |   |  Prompt for a valid entry | +--v-----------+
+| +----------v----------------+               |   |---------------------------+ | QUIT || EXIT |
+| |  Incorrect Guess          |  +------------v-----------------------------+   +--------------+
+| |  - Decrement # of guesses |  | Correct Guess                            |       |
+| |  - Cont. to prompt until  |  | - Update Word.mask && Word.wordCopy      |       |
+| |  Word.guesses = 0         |  |   Cont. to prompt until word is revealed |       |
+| +---------------------------+  +------------------------------------------+       |
+|                           |                     |                                 |
+|                           |       +-------------v------------+                    |
+|                           |       | Letter.validate === true |                    |
+|                           +------->        Prompt user       |                    |
+|                                   +--------------------------+                    |
+|                                      |                    |                       |
+|                               +------v---+      +---------v--------+              |
++-------------------------------+ New Game |      | Exit Node process <--------------+
+                                +----------+      +------------------+
+```
+
+### Resources
