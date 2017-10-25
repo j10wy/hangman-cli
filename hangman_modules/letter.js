@@ -7,9 +7,7 @@ function Letter(letter, word) {
 
 // Log function to help with debugging
 Letter.prototype.log = function log(stuffToLog) {
-	console.log(`\n****** START LOGGER ******`);
-	console.log(stuffToLog);
-	console.log(`\n****** END LOGGER ******\n`);
+	console.log(`\n${stuffToLog}\n\n`);
 	// Return 'this' so I can chain methods in index.js
 	// Example: return new Letter(value, word).log("Logging stuff...").validate();
 	return this;
@@ -46,14 +44,16 @@ Letter.prototype.inArray = function inArray(word, letter) {
 	});
 
 	// Log the remaining guesses and the current state of Word.mask via Word.wordCopy
-	console.log(`\n\n Remaining guesses: ${word.guesses}\n\n`);
-	console.log(`\n\n${word.wordCopy}\n\n`);
+	console.log(`\nRemaining guesses: ${word.guesses}`);
+	console.log(`\n${word.wordCopy}\n`);
 	if (word.guesses === 0) {
 		// End the game by returning true if/when Word.guesses reaches 0;
+		this.log("\nBETTER LUCK NEXT TIME!\n");
 		return true;
 	} else if (word.word === word.wordCopy) {
 		// Return true if/when Word.wordCopy string matches the random word assigned at the time the object was initialized 
 		// This will cause Inquirer to exit the prompt and move on to the then statement
+		this.log("WINNER!");
 		return true;
 	} else {
 		// If false, continue to guess
@@ -70,18 +70,17 @@ Letter.prototype.validate = function validateEntry() {
 
 	if (isNum) {
 		// Test for digits first. 
-		this.log("\n\nNumbers not allowed!\n");
+		this.log("Numbers not allowed!");
 		return false;
 	} else if (entry.toUpperCase() === 'QUIT' || entry.toUpperCase() === 'EXIT') {
-		console.log("\n\nQUITTER!\n\n");
+		this.log("QUITTER!");
 		return true;
 	} else if (this.letter.length > 1 || this.letter.length === 0) {
 		// if value is not a digit, text if the length is lt 0 or gt 1
-		this.log("\n\nEnter a single letter\n");
+		this.log("Enter a single letter");
 		return false;
 	} else {
 		// Letter seems to be a valid entry
-		// this.log("\nValid entry...\n");
 		return this.inArray(this.word, this.letter);
 	}
 }
