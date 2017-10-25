@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/jeffreylowy/hangman-cli#readme",
   "dependencies": {
+    "colors": "^1.1.2",
     "inquirer": "^3.3.0"
   }
 }
