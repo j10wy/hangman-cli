@@ -1,3 +1,5 @@
+# Description
+A hangman command-line game using constructor functions
 
 ### Commands:
 
@@ -9,7 +11,10 @@ node .
 node . --test
 
 # Run via NPM scripts
-npm run
+
+# Play a regular game
+npm start
+# The word will be displayed when the game starts use this to test the game
 npm run test
 ```
 
@@ -27,13 +32,13 @@ npm run test
 +------------------------------------->    startGame()   <--+
 |                               +-----+ Prompt for entry |  |
 |                               |     +------------------+  +----------------------+
-|                               |                      |    |                      |
-|                       +-------v---------+            |    |                      |
-|                       |   Valid Entry   +---+   +---------------------------+    |
+|                               |                           |                      |
+|                       +-------v---------+                 |                      |
+|                       |   Valid Entry   +---+   +---------v-----------------+    |
 |            +----------+(a single letter)|   |   |  Number || String v 1     |    |
 |            |          +-----------------+   |   | - Warn user               |    |
 |            |                                |   |  Prompt for a valid entry | +--v-----------+
-| +----------v----------------+               |   |---------------------------+ | QUIT || EXIT |
+| +----------v----------------+               |   +---------------------------+ | QUIT || EXIT |
 | |  Incorrect Guess          |  +------------v-----------------------------+   +--------------+
 | |  - Decrement # of guesses |  | Correct Guess                            |       |
 | |  - Cont. to prompt until  |  | - Update Word.mask && Word.wordCopy      |       |
@@ -46,8 +51,12 @@ npm run test
 |                                   +--------------------------+                    |
 |                                      |                    |                       |
 |                               +------v---+      +---------v--------+              |
-+-------------------------------+ New Game |      | Exit Node process <--------------+
++-------------------------------+ New Game |      | Exit Node process <-------------+
                                 +----------+      +------------------+
 ```
 
 ### Resources
+[MDN: Constructors](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/constructor)
+[TODO Highlight for VS Code](https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight)
+[Github Probot TODOs](https://todo.jasonet.co/)
+[Github Probots](https://github.com/probot/probot)

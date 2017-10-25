@@ -4,7 +4,8 @@
   "description": "a hangman command-line game using constructor functions",
   "main": "index.js",
   "scripts": {
-    "test": "node $npm_package_main"
+    "test": "node $npm_package_main --test",
+    "start":"node ."
   },
   "repository": {
     "type": "git",
