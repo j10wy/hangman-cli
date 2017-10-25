@@ -18,14 +18,25 @@ function startGame() {
 		validate: function (value) {
 			return new Letter(value, word).validate();
 		}
-	}]).then(answers => {
+	}]).then(() => {
 		console.log("\n\nYou win!\n\n".toUpperCase());
+		playAgain()
 	});
 }
 
-// @todo Create Inquirer prompt to play again
-// function playAgain() {
-// 	inquirer.prompt([{}]).then()
-// }
+function playAgain() {
+	inquirer.prompt([{
+		type:'list',
+		name: 'playagain',
+		message:'Want to play again?',
+		choices: ['Lets do it!', 'Eh... I quit!'],
+	}]).then(answers =>{
+		if (answers.playagain === 'Lets do it!') {
+			startGame();
+		} else {
+			return false;
+		}
+	});
+}
 
 startGame();
